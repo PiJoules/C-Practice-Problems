@@ -6,6 +6,9 @@
 
 #include <stdio.h>
 
+int isPalindrome(int);
+int max(int, int);
+
 int main(){
 	int i, j, product = 0;
 	for (i = 999; i-- > 100; ){
@@ -40,6 +43,6 @@ int isPalindrome(int n){
 	return nCopy == reverse;
 }
 
-int max(a,b){
+int max(int a, int b){
 	return a > b ? a : b;
 }
