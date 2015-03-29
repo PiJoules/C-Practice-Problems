@@ -9,3 +9,4 @@ Because I'm a scrub. These problems are from [Project Euler](https://projecteule
 6. sum_square_difference.c
 7. 10001st_prime.c
 8. largest_product_in_a_series.c (I have no idea what I was doing)
+9. special_pythagorean_triplet.c
