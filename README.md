@@ -6,3 +6,4 @@ Because I'm a scrub. These problems are from [Project Euler](https://projecteule
 3. largest_prime_factor.c
 4. largest_palindrome_product.c (could've been done more efficiently)
 5. smallest_multiple.c
+6. sum_square_difference.c
