@@ -15,3 +15,4 @@ Because I'm a scrub. These problems are from [Project Euler](https://projecteule
 12. highly_divisible_triangular_number.c
 13. large_sum.c
 14. longest_collatz_sequence.c
+15. lattice_paths.c
