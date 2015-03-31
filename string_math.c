@@ -1,5 +1,6 @@
 #include <string.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 void reverse(char*);
 int charToInt(char);
@@ -7,11 +8,13 @@ int compare(char*, char*);
 char intToChar(int);
 char * trimZeroes(char*);
 char * padZeroes(char*, char*);
+char * intToString(int);
 char * substr(char*, int, int);
 char * append(char*, char);
 char * prepend(char*, char);
 char * addNumbers(char*, char*);
 char * subtractNumbers(char*, char*);
+char * multiplyNumbers(char*, char*);
 
 
 char * addNumbers(char * num1, char * num2){
@@ -58,7 +61,7 @@ char * addNumbers(char * num1, char * num2){
 		result = prepend(result, intToChar(digit));
 	}
 
-	return trimZeroes(result);
+	return result;
 }
 
 char * subtractNumbers(char * num1, char * num2){
@@ -109,7 +112,63 @@ char * subtractNumbers(char * num1, char * num2){
 		result = prepend(result, intToChar(digit));
 	}
 
-	return trimZeroes(result);
+	return result;
+}
+
+char * multiplyNumbers(char * num1, char * num2){
+	char * result = "0";
+
+	int num1IsNegative = (num1[0] == '-');
+	int num2IsNegative = (num2[0] == '-');
+
+	if (num1IsNegative && num2IsNegative){
+		return multiplyNumbers( substr(num1, 1, strlen(num1)-1), substr(num2, 1, strlen(num2)-1) );
+	}
+	else if (num1IsNegative && !num2IsNegative){
+		result = multiplyNumbers( substr(num1, 1, strlen(num1)-1), num2 );
+		result = prepend(result, '-');
+		return result;
+	}
+	else if (!num1IsNegative && num2IsNegative){
+		result = multiplyNumbers( num1, substr(num2, 1, strlen(num2)-1) );
+		result = prepend(result, '-');
+		return result;
+	}
+
+	int i, j, len1 = strlen(num1), len2 = strlen(num2);
+	for (i = 0; i < len1; i++){
+		int digit1 = charToInt(num1[i]);
+
+		if (digit1 == 0)
+			continue;
+
+		int num1Place = len1-1-i;
+		if (num1Place < 0)
+			num1Place++;
+
+		for (j = 0; j < len2; j++){
+			int digit2 = charToInt(num2[j]);
+
+			if (digit2 == 0)
+				continue;
+
+			int num2Place = len2-1-j;
+			if (num2Place < 0)
+				num2Place++;
+
+			char * subProduct = intToString(digit1*digit2);
+			int subProductPlace = num1Place + num2Place;
+
+			int k;
+			for (k = 0; k < subProductPlace; k++){
+				subProduct = append(subProduct, '0');
+			}
+
+			result = addNumbers(result, subProduct);
+		}
+	}
+
+	return result;
 }
 
 
@@ -179,6 +238,9 @@ char * substr(char * str, int start, int length){
 
 
 char * trimZeroes(char * str) {
+	if (strcmp(str, "") == 0)
+		return "0";
+
 	char * tmp = malloc(strlen(str)*sizeof(char));
 	strcpy(tmp, str);
 	while (tmp[0] == '0'){
@@ -245,4 +307,24 @@ char * padZeroes(char * num1, char * num2){
 		num1 = prepend(num1, '0');
 	}
 	return num1;
+}
+
+
+char * intToString(int num){
+	char * str = "";
+ 	int i, rem, len = 0, n;
+ 
+    n = num;
+    while (n != 0){
+        len++;
+        n /= 10;
+    }
+    str = malloc(sizeof(char)*(len+1)); // +1 for the terminating char
+    for (i = 0; i < len; i++){
+        rem = num % 10;
+        num /= 10;
+        str[len - (i + 1)] = rem + '0';
+    }
+    str[len] = '\0';
+    return str;
 }

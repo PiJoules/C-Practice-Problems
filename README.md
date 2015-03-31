@@ -16,3 +16,4 @@ Because I'm a scrub. These problems are from [Project Euler](https://projecteule
 13. large_sum.c
 14. longest_collatz_sequence.c
 15. lattice_paths.c
+16. power_digit_sum.c
