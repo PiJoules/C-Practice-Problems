@@ -12,3 +12,4 @@ Because I'm a scrub. These problems are from [Project Euler](https://projecteule
 9. special_pythagorean_triplet.c
 10. summation_of_primes.c (I wish I had known about the sqrt thing earlier)
 11. largest_product_in_a_grid.c
+12. highly_divisible_triangular_number.c
