@@ -228,7 +228,7 @@ char * prepend(char * s, char c){
 }
 
 
-char * substr(char * str, int start, int length){
+char* substr(char * str, int start, int length){
 	char * sub = "";
 	sub = malloc(sizeof(char)*(length+1));
 	memcpy(sub, &str[start], length);

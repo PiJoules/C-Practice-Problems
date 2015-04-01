@@ -17,3 +17,25 @@ Because I'm a scrub. These problems are from [Project Euler](https://projecteule
 14. longest_collatz_sequence.c
 15. lattice_paths.c
 16. power_digit_sum.c
+17. number_letter_counts.c
+
+## Ryan plz
+```c
+char* substr(char * str, int start, int length){
+	char * sub = "";
+	sub = malloc(sizeof(char)*(length+1));
+	memcpy(sub, &str[start], length);
+	sub[length] = '\0';
+	return sub;
+}
+
+void substr(char ** str, int start, int len){
+	str = realloc(str, sizeof(char)*(len+1)); // +1 for the null terminator
+	memcpy(str, &str[start], len);
+	*str[len] = '\0';
+}
+
+char * test = "test";
+substr(&test, 1, 2);
+printf("%s\n", test);
+```
