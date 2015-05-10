@@ -1,5 +1,10 @@
 extern int charToInt(char);
-extern char * intToString(int);
-extern char * addNumbers(char*, char*);
-extern char * subtractNumbers(char*, char*);
-extern char * multiplyNumbers(char*, char*);
+extern int compare(char*, char*);
+extern void reverse(sds);
+extern sds intToString(int);
+extern sds prepend(char*, sds);
+extern sds substr(sds, int, int);
+extern sds padZeroes(char*, char*);
+extern sds addNumbers(sds, sds);
+extern sds subtractNumbers(sds, sds);
+extern sds multiplyNumbers(sds, sds);
